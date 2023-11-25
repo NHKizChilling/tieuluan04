@@ -164,8 +164,6 @@ void themTu(AVLTree &T) {
 		printf("Them thanh cong.\n");
         ghi1TuMoiVaoFile(tu, "tudien.txt");
     }
-	else if(!insertNode(T, tu))
-		printf("Tu nay da co san trong tu dien");
 	else
 		printf("Khong du bo nho luu tru.\n");
 }
