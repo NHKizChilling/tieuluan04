@@ -1,10 +1,17 @@
+/*
+Các thành viên:
+    -Nguyễn Hoàng Khải - 22714331
+    -Nguyễn Võ Hiệp - 22707701
+    -Nguyễn Gia Hào - 22716071
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "AVLTree.h"
 #include <queue>
 
-
+//Khai báo hàm 
 void themTu(AVLTree &T);
 AVLNode* timKiem(AVLTree T, char tuAnh[]);
 int suaTu(AVLTree &T, char tuAnh[]);
@@ -20,6 +27,12 @@ int userMenu();
 void admin(AVLTree &T);
 void user(AVLTree &T);
 
+
+/*
+Hàm main
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 int main() {
     int choice;
     char pass[10];
@@ -59,6 +72,11 @@ int main() {
     return 0;
 }
 
+/*
+Hàm tính chức năng của admin
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 void admin(AVLTree &T) {
     int choice;
     char tu[50], tuUp[50], tuDel[50];
@@ -111,6 +129,8 @@ void admin(AVLTree &T) {
     } while(choice != 0);
 }
 
+//Hàm user
+//Người viết: Nguyễn Hoàng Khải
 void user(AVLTree &T) {
     int choice;
     char tu[50];
@@ -150,6 +170,11 @@ void user(AVLTree &T) {
     } while(choice != 0);
 }
 
+/*
+Hàm thêm từ
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 void themTu(AVLTree &T) {
 	TU tu;
 	do {
@@ -168,6 +193,12 @@ void themTu(AVLTree &T) {
 		printf("Khong du bo nho luu tru.\n");
 }
 
+
+/*
+Hàm tìm kiếm từ
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 AVLNode* timKiem(AVLTree T, char tuAnh[]) {
 	if(T == NULL) {
 		return NULL;
@@ -178,6 +209,12 @@ AVLNode* timKiem(AVLTree T, char tuAnh[]) {
     timKiem(T->pLeft, tuAnh):timKiem(T->pRight, tuAnh);
 }
 
+
+/*
+Hàm đọc file
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 12/11/2023
+*/
 void docFile(AVLTree &T1, char filename[]) {
 	FILE *file = fopen(filename, "r"); 
 
@@ -203,6 +240,11 @@ void docFile(AVLTree &T1, char filename[]) {
     fclose(file);
 }
 
+/*
+Hàm ghi file
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 12/11/2023
+*/
 void ghiFile(AVLTree T, char filename[]) {
 	FILE *f = fopen(filename, "a");
 	if(f == NULL) {
@@ -219,6 +261,12 @@ void ghiFile(AVLTree T, char filename[]) {
 	fclose(f);
 }
 
+
+/*
+Hàm ghi 1 từ mới vào file
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 12/11/2023
+*/
 void ghi1TuMoiVaoFile(TU tu, char filename[]) {
     FILE *f = fopen(filename, "a");
     if(f == NULL) {
@@ -230,6 +278,11 @@ void ghi1TuMoiVaoFile(TU tu, char filename[]) {
     fclose(f);
 }
 
+/*
+Hàm xóa từ trong cây
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 void xoaTu(AVLTree &T, char tuAnh[]) {
     if(T == NULL) {
         printf("Tu dien rong.\n");
@@ -242,6 +295,11 @@ void xoaTu(AVLTree &T, char tuAnh[]) {
         printf("Xoa thanh cong.\n");
 }
 
+/*
+Hàm thêm từ vào lịch sử tìm kiếm
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 void addHistorySearch(TU tu, std::queue<TU> &q) {
     if(q.size() == 10) {
         q.pop();
@@ -249,6 +307,12 @@ void addHistorySearch(TU tu, std::queue<TU> &q) {
     q.push(tu);
 }
 
+
+/*
+Hàm hiển thị lịch sử tìm kiếm
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 void showHistorySearch(std::queue<TU> q) {
     if(q.empty()) {
         printf("Khong co tu trong lich su tim kiem.\n");
@@ -261,12 +325,22 @@ void showHistorySearch(std::queue<TU> q) {
     }
 }
 
+
+/*
+Hàm kiểm tra người dùng có phải admin không?
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 int isAdmin(char pass[]) {
     if(strcmp(pass, "123456") == 0)
         return 1;
     return 0;
 }
-
+/*
+Menu của admin và user
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 int adminMenu() {
     system("cls");
     printf("1. Them tu.\n");
@@ -295,6 +369,12 @@ int userMenu() {
     return choice;
 }
 
+
+/*
+Hàm sửa từ
+Người viết: Nguyễn Hoàng Khải
+Ngày viết: 5/11/2023
+*/
 int suaTu(AVLTree &T, char tuAnh[]) {
 	if(T == NULL)
 		return -1;

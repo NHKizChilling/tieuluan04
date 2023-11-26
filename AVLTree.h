@@ -1,3 +1,8 @@
+//Người viết lại thư viện AVLTree.h từ code đã viết có trong main: Nguyễn Hoàng Khải
+
+//Hàm khai báo
+//Người viết: Nguyễn Võ Hiệp
+
 #define LH -1  	 /* Cay con trai cao hon */
 #define EH 0	 /* Hai cay con bang nhau */
 #define RH 1 
@@ -22,6 +27,12 @@ typedef AVLNode* AVLTree;
 
 #endif
 
+
+/*
+Các hàm xoay cây
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 1/11/2023
+*/
 
 void rotateRR(AVLTree &T) {
 	AVLNode* T1 = T->pRight;
@@ -103,6 +114,11 @@ void rotateRL(AVLTree &T) {
 	T = T2;
 }
 
+/*
+Các hàm cân bằng cây
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 1/11/2023
+*/
 int balanceLeft(AVLTree &T) {
 	AVLNode* T1 = T->pLeft;
 	switch(T1->balFactor) {
@@ -126,6 +142,11 @@ int balanceRight(AVLTree &T ) {
 	return 0;
 }
 
+/*
+Các hàm duyệt cây
+Người viết: Nguyễn Gia Hào
+Ngày viết: 1/11/2023
+*/
 void NLR(AVLTree T) {
 	if(T != NULL) {
 		printf("%s (%s): %s. \nExample: %s\n", T->Key.tuAnh, T->Key.loaiTu, T->Key.nghia, T->Key.viDu);
@@ -149,6 +170,12 @@ void LRN(AVLTree T) {
 		printf("%s (%s): %s. \nExample: %s\n", T->Key.tuAnh, T->Key.loaiTu, T->Key.nghia, T->Key.viDu);
 	}
 }
+
+/*
+Các hàm thêm, xóa, tìm kiếm
+Người viết: Nguyễn Võ Hiệp
+Ngày viết: 2/11/2023
+*/
 
 int insertNode(AVLTree &T, TU tu) { 
 	int res;
@@ -246,6 +273,11 @@ int delNode(AVLTree &T, char tuAnh[]) {
 	}
 }
 
+/*
+Hàm tính chiều cao của cây
+Người viết: Nguyễn Gia Hào
+Ngày viết: 1/11/2023
+*/
 int tinhH(AVLTree T) {
 	if(T == NULL) {
 		return 0;
